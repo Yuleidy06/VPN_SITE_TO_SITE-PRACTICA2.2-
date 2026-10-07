@@ -1,0 +1,495 @@
+Connected to Dynamips VM "ISP" (ID 1, type c7200) - Console port
+Press ENTER to get the prompt.
+ROMMON emulation microcode.
+
+                           Launching IOS image at 0x80008000...
+
+              Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+           cisco Systems, Inc.
+           170 West Tasman Drive
+           San Jose, California 95134-1706
+
+
+
+Cisco IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)S6, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2014 by Cisco Systems, Inc.
+Compiled Fri 08-Aug-14 04:05 by prod_rel_team
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Cisco 7206VXR (NPE400) processor (revision A) with 491520K/32768K bytes of memory.
+Processor board ID 4279256517
+R7000 CPU at 150MHz, Implementation 39, Rev 2.1, 256KB L2, 512KB L3 Cache
+6 slot VXR midplane, Version 2.1
+
+Last reset from power-on
+
+PCI bus mb0_mb1 (Slots 0, 1, 3 and 5) has a capacity of 600 bandwidth points.
+Current configuration on bus mb0_mb1 has a total of 600 bandwidth points.
+This configuration is within the PCI bus capacity and is supported.
+
+PCI bus mb2 (Slots 2, 4, 6) has a capacity of 600 bandwidth points.
+Current configuration on bus mb2 has a total of 400 bandwidth points
+This configuration is within the PCI bus capacity and is supported.
+
+Please refer to the following document "Cisco 7200 Series Port Adaptor
+Hardware Configuration Guidelines" on Cisco.com <http://www.cisco.com>
+for c7200 bandwidth points oversubscription and usage guidelines.
+
+
+5 FastEthernet interfaces
+509K bytes of NVRAM.
+
+8192K bytes of Flash internal SIMM (Sector size 256K).
+no cdp log mismatch duplex
+       ^
+% Invalid input detected at '^' marker.
+
+SETUP: new interface FastEthernet0/0 placed in "shutdown" state
+SETUP: new interface FastEthernet1/0 placed in "shutdown" state
+SETUP: new interface FastEthernet1/1 placed in "shutdown" state
+SETUP: new interface FastEthernet2/0 placed in "shutdown" state
+SETUP: new interface FastEthernet2/1 placed in "shutdown" state
+% Crashinfo may not be recovered at bootflash:crashinfo
+% This file system device reports an error
+
+
+Press RETURN to get started!
+
+
+*Oct  7 18:13:59.011: %IFMGR-7-NO_IFINDEX_FILE: Unable to open nvram:/ifIndex-table No such file or directory
+*Oct  7 18:13:59.187: %DEC21140-1-INITFAIL: Unsupported PHY brand timed out, csr5=0x0
+*Oct  7 18:14:01.195: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Oct  7 18:14:01.303: %SYS-5-CONFIG_I: Configured from memory by console
+*Oct  7 18:14:01.355: %LINK-5-CHANGED: Interface FastEthernet1/0, changed state to administratively down
+*Oct  7 18:14:01.359: %LINK-5-CHANGED: Interface FastEthernet1/1, changed state to administratively down
+*Oct  7 18:14:01.363: %LINK-5-CHANGED: Interface FastEthernet2/0, changed state to administratively down
+*Oct  7 18:14:01.363: %LINK-5-CHANGED: Interface FastEthernet2/1, changed state to administratively down
+*Oct  7 18:14:01.447: %SYS-5-RESTART: System restarted --
+Cisco IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)S6, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2014 by Cisco Systems, Inc.
+Compiled Fri 08-Aug-14 04:05 by prod_rel_team
+*Oct  7 18:14:02.379: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to down
+*Oct  7 18:14:02.383: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to down
+*Oct  7 18:14:02.387: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/1, changed state to down
+*Oct  7 18:14:02.391: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet2/0, changed state to down
+*Oct  7 18:14:02.395: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet2/1, changed state to down
+*Oct  7 18:14:03.307: %LINK-5-CHANGED: Interface FastEthernet0/0, changed state to administratively down
+ISP#enable
+ISP#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+ISP(config)#no ip domain-lookup
+ISP(config)#int f0/0
+ISP(config-if)#description Hacia-FGT
+ISP(config-if)#
+ISP(config-if)#
+ISP(config-if)#ISP(config-if)#
+                 ^
+% Invalid input detected at '^' marker.
+
+ISP(config-if)#ip add 20.22.9.49 255.255.255.252
+ISP(config-if)#ip nat inside
+ISP(config-if)#no sh
+ISP(config-if)#int f
+*Oct  7 18:15:31.863: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Oct  7 18:15:32.863: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+ISP(config-if)#int f1/0
+ISP(config-if)#ip nat inside
+ISP(config-if)#description HACIA-SUCURSAL
+ISP(config-if)#ip add 20.22.9.53 255.255.255.252
+ISP(config-if)#ip nat inside
+ISP(config-if)#no sh
+ISP(config-if)#
+*Oct  7 18:16:21.171: %LINK-3-UPDOWN: Interface FastEthernet1/0, changed state to up
+*Oct  7 18:16:22.171: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to up
+ISP(config-if)#int f1/1
+ISP(config-if)#description Hacia-INTERNET
+ISP(config-if)#ip add dhcp
+ISP(config-if)#ip nat outside
+ISP(config-if)#no sh
+ISP(config-if)#exit
+ISP(config)#
+*Oct  7 18:16:57.175: %LINK-3-UPDOWN: Interface FastEthernet1/1, changed state to up
+*Oct  7 18:16:58.175: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/1, changed state to up
+ISP(config)#ip access-list standar NAT-PUBLICAS
+*Oct  7 18:17:10.507: %DHCP-6-ADDRESS_ASSIGN: Interface FastEthernet1/1 assigned DHCP address 192.168.42.141, mask 255.255.255.0, hostname ISP
+
+ISP(config)#ip access-list standar NAT-PUBLICAS
+ISP(config-std-nacl)#permit 20.22.9.48 0.0.0.7
+ISP(config-std-nacl)#exit
+ISP(config)#ip nat inside source list NAT-PUBLICAS interface f1/1 overload
+ISP(config)#end
+ISP#wr
+Warning: Attempting to overwrite an NVRAM configuration previously written
+by a different version of the system image.
+Overwrite the previous NVRAM configuration?[confirm]
+
+*Oct  7 18:17:52.363: %SYS-5-CONFIG_I: Configured from console by console
+Building configuration...
+[OK]
+ISP#show ip int brief
+Interface              IP-Address      OK? Method Status                Protocol
+FastEthernet0/0        20.22.9.49      YES manual up                    up
+FastEthernet1/0        20.22.9.53      YES manual up                    up
+FastEthernet1/1        192.168.42.141  YES DHCP   up                    up
+FastEthernet2/0        unassigned      YES unset  administratively down down
+FastEthernet2/1        unassigned      YES unset  administratively down down
+ISP#show ip route | include 0.0.0.0
+Gateway of last resort is 192.168.42.1 to network 0.0.0.0
+S*    0.0.0.0/0 [254/0] via 192.168.42.1
+      20.0.0.0/8 is variably subnetted, 4 subnets, 2 masks
+ISP#ping 8.8.8.8
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.8.8.8, timeout is 2 seconds:
+.....
+Success rate is 0 percent (0/5)
+ISP#ping 192.168.42.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.42.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 16/40/52 ms
+ISP#ping 8.8.8.8
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.8.8.8, timeout is 2 seconds:
+.....
+Success rate is 0 percent (0/5)
+ISP#ping 1.1.1.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 1.1.1.1, timeout is 2 seconds:
+.....
+Success rate is 0 percent (0/5)
+ISP#telnet 8.8.8.8 53
+Trying 8.8.8.8, 53 ... Open
+
+[Connection to 8.8.8.8 closed by foreign host]
+ISP#
+ISP#PING 20.22.9.50
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 20.22.9.50, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 24/28/32 ms
+ISP#
+*Oct  7 18:58:36.831: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to down
+ISP#
+*Oct  7 19:00:05.831: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+ISP#
+ISP#IOSv - Cisco Systems Confidential -
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#
+ISP#Supplemental End User License Restrictions
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#
+ISP#$ was provided with, or deployed or used as part of a production environm
+This IOSv software is provided AS-IS without warranty of any kind. Under no circ ^umstances may this software be used separate from the Cisco Modeling Labs Softwa
+re that this software was provided with, or deployed or used as part of a produc
+tion environm
+
+% Invalid input detected at '^' marker.
+
+ISP#
+ISP#$ized use or distribution of this software is expressly prohibited.
+By using the software, you agree to abide by the terms and conditions of the Cis ^co End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use
+or distribution of this software is expressly prohibited.
+
+% Invalid input detected at '^' marker.
+
+ISP#
+ISP#Switch>
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch>EN
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch#conf t
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Enter configuration commands, one per line.  End with CNTL/Z.
+      ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config)#no ip domain-lookup
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config)#vlan 10
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-vlan)#name Usuarios
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-vlan)#vlan 20
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-vlan)#name ADMINISTRATIVOS
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-vlan)#exit
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config)#interface GigabitEthernet0/0
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# description TRUNK-FGT-port2
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# switchport trunk encapsulation dot1q
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# switchport mode trunk
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# switchport trunk allowed vlan 10,20
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# no shutdown
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)#interface GigabitEthernet0/1
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# description PC-V10
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# switchport mode access
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# switchport access vlan 10
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# spanning-tree portfast
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#%Warning: portfast should only be enabled on ports connected to a single
+    ^
+% Invalid input detected at '^' marker.
+
+ISP# host. Connecting hubs, concentrators, switches, bridges, etc... to this
+      ^
+% Invalid input detected at '^' marker.
+
+ISP# interface  when portfast is enabled, can cause temporary bridging loops.
+      ^
+% Invalid input detected at '^' marker.
+
+ISP# Use with CAUTION
+      ^
+% Invalid input detected at '^' marker.
+
+ISP#
+ISP#%Portfast has been configured on GigabitEthernet0/1 but will only
+    ^
+% Invalid input detected at '^' marker.
+
+ISP# have effect when the interface is in a non-trunking mode.
+       ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# no shutdown
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)#interface GigabitEthernet0/2
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# description PC-V20
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# switchport mode access
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# switchport access vlan 20
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#Switch(config-if)# spanning-tree portfast
+     ^
+% Invalid input detected at '^' marker.
+
+ISP#$ortfast should only be enabled on ports connected to -  3 MIRAcdu 3a 00
+%Warning: portfast should only be enabled on ports connected to -  3 MIRAcdu 3a ^00
+
+% Invalid input detected at '^' marker.
+
+ISP#5 trnet 10100-
+    ^
+% Invalid input detected at '^' marker.
+
+ISP#$ms andoa /        pcNl  Vlans indm ling Labogreide byt ion of tihd
+-  sthe terms andoa /        pcNl  Vlans indm ling Labogreide byt ion of tihd
+^
+% Invalid input detected at '^' marker.
+
+ISP# isnty of any kinircumshse you agd koftfmribplmeno the C
+       ^
+% Invalid input detected at '^' marker.
+
+ISP#   terminal length 0
+ISP#   show running-config
+Building configuration...
+
+Current configuration : 1368 bytes
+!
+! Last configuration change at 18:17:52 UTC Wed Oct 7 2026
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname ISP
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ description Hacia-FGT
+ ip address 20.22.9.49 255.255.255.252
+ ip nat inside
+ duplex full
+!
+interface FastEthernet1/0
+ description HACIA-SUCURSAL
+ ip address 20.22.9.53 255.255.255.252
+ ip nat inside
+ speed auto
+ duplex auto
+!
+interface FastEthernet1/1
+ description Hacia-INTERNET
+ ip address dhcp
+ ip nat outside
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/0
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/1
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+ip nat inside source list NAT-PUBLICAS interface FastEthernet1/1 overload
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ip access-list standard NAT-PUBLICAS
+ permit 20.22.9.48 0.0.0.7
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ login
+!
+!
+end
+
+ISP#
