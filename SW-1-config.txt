@@ -1,0 +1,6 @@
+SW-1 (Ethernet switch de GNS3)
+
+Puerto      VLAN  Tipo     Conectado a
+Ethernet0   1     dot1q    FGT-20220949 port2 (trunk)
+Ethernet1   10    access   PC1 e0
+Ethernet2   10    access   WEB-TERM eth0

@@ -1,0 +1,16 @@
+
+PC1>
+PC1> show ip
+
+NAME        : PC1[1]
+IP/MASK     : 10.22.9.10/25
+GATEWAY     : 10.22.9.1
+DNS         : 8.8.8.8
+DHCP SERVER : 10.22.9.1
+DHCP LEASE  : 591312, 604800/302400/529200
+MAC         : 00:50:79:66:68:00
+LPORT       : 20024
+RHOST:PORT  : 127.0.0.1:20025
+MTU         : 1500
+
+PC1>

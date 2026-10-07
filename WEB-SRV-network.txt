@@ -1,0 +1,7 @@
+# WEB-SRV (Docker mendhak/http-https-echo) - /etc/network/interfaces
+# HTTPS: https://172.22.9.10:8443 (certificado autofirmado)
+auto eth0
+iface eth0 inet static
+ address 172.22.9.10
+ netmask 255.255.255.240
+ gateway 172.22.9.1

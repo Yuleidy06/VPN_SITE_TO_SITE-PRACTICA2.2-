@@ -1,0 +1,191 @@
+Connected to Dynamips VM "ISP" (ID 1, type c7200) - Console port
+Press ENTER to get the prompt.
+thernet2/0 placed in "shutdown" state
+SETUP: new interface FastEthernet2/1 placed in "shutdown" state
+% Crashinfo may not be recovered at bootflash:crashinfo
+% This file system device reports an error
+
+
+Press RETURN to get started!
+
+
+*Oct  7 04:07:01.007: %IFMGR-7-NO_IFINDEX_FILE: Unable to open nvram:/ifIndex-table No such file or directory
+*Oct  7 04:07:01.179: %DEC21140-1-INITFAIL: Unsupported PHY brand timed out, csr5=0x0
+*Oct  7 04:07:04.135: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Oct  7 04:07:04.147: %LINK-3-UPDOWN: Interface FastEthernet1/0, changed state to up
+*Oct  7 04:07:04.151: %LINK-3-UPDOWN: Interface FastEthernet1/1, changed state to up
+*Oct  7 04:07:04.151: %LINK-3-UPDOWN: Interface FastEthernet2/0, changed state to up
+*Oct  7 04:07:04.151: %LINK-3-UPDOWN: Interface FastEthernet2/1, changed state to up
+*Oct  7 04:07:04.315: %SYS-5-CONFIG_I: Configured from memory by console
+*Oct  7 04:07:04.447: %SYS-5-RESTART: System restarted --
+Cisco IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)S6, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2014 by Cisco Systems
+ISP#, Inc.
+Compiled Fri 08-Aug-14 04:05 by prod_rel_team
+*Oct  7 04:07:05.311: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to down
+*Oct  7 04:07:05.315: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to down
+*Oct  7 04:07:05.319: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/1, changed state to down
+*Oct  7 04:07:05.323: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet2/0, changed state to down
+*Oct  7 04:07:05.327: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet2/1, changed state to down
+*Oct  7 04:07:06.323: %LINK-5-CHANGED: Interface FastEthernet0/0, changed state to administratively down
+*Oct  7 04:07:06.335: %LINK-5-CHANGED: Interface FastEthernet1/0, changed state to administratively down
+*Oct  7 04:07:06.339: %LINK-5-CHANGED: Interface FastEthernet1/1, changed state to administratively down
+*Oct  7 04:07:06.343: %LINK-5-CHANGED: Interface FastEthernet2/0, changed st
+ISP#ate to administratively down
+*Oct  7 04:07:06.347: %LINK-5-CHANGED: Interface FastEthernet2/1, changed state to administratively down
+ISP#enable
+ISP#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+ISP(config)#hostname ISP
+ISP(config)#no ip domain-lookup
+ISP(config)#int fastEthernet0/0
+ISP(config-if)#description Hacia-FGT
+ISP(config-if)#ip add 20.22.9.49 255.255.255.252
+ISP(config-if)#no sh
+ISP(config-if)#int fa
+*Oct  7 04:08:53.355: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Oct  7 04:08:54.355: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+ISP(config-if)#int fastEthernet1/0
+ISP(config-if)#description Hacia-R1
+ISP(config-if)#ip add 20.22.9.53 255.255.255.252
+ISP(config-if)#no sh
+ISP(config-if)#int loopba
+*Oct  7 04:09:29.903: %LINK-3-UPDOWN: Interface FastEthernet1/0, changed state to up
+*Oct  7 04:09:30.903: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to up
+ISP(config-if)#int loopback0
+ISP(config-if)#
+*Oct  7 04:09:34.599: %LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback0, changed state to up
+ISP(config-if)#description Internet-simulada
+ISP(config-if)#ip add 8.8.8.8 255.255.255.255
+ISP(config-if)#end
+ISP#wri
+*Oct  7 04:09:58.223: %SYS-5-CONFIG_I: Configured from console by console
+ISP#write
+Warning: Attempting to overwrite an NVRAM configuration previously written
+by a different version of the system image.
+Overwrite the previous NVRAM configuration?[confirm]
+Building configuration...
+[OK]
+ISP#ping 20.22.9.50
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 20.22.9.50, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 20/24/28 ms
+ISP#terminal length 0
+ISP#show running-config
+Building configuration...
+
+Current configuration : 1245 bytes
+!
+! Last configuration change at 04:09:58 UTC Wed Oct 7 2026
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname ISP
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Internet-simulada
+ ip address 8.8.8.8 255.255.255.255
+!
+interface FastEthernet0/0
+ description Hacia-FGT
+ ip address 20.22.9.49 255.255.255.252
+ duplex full
+!
+interface FastEthernet1/0
+ description Hacia-R1
+ ip address 20.22.9.53 255.255.255.252
+ speed auto
+ duplex auto
+!
+interface FastEthernet1/1
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/0
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/1
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ login
+!
+!
+end
+
+ISP#

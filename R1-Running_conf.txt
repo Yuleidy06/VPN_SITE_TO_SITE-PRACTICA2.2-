@@ -1,0 +1,231 @@
+Connected to Dynamips VM "R1" (ID 3, type c7200) - Console port
+Press ENTER to get the prompt.
+eplay detection support: Y
+        Status: ACTIVE(ACTIVE)
+
+     inbound ah sas:
+
+     inbound pcp sas:
+
+     outbound esp sas:
+      spi: 0xFE7793F1(4269249521)
+        transform: esp-des esp-sha-hmac ,
+        in use settings ={Tunnel, }
+        conn id: 2, flow_id: 2, sibling_flags 80000040, crypto map: CMAP-FGT
+        sa timing: remaining key lifetime (k/sec): (4192547/3377)
+        IV size: 8 bytes
+        replay detection support: Y
+        Status: ACTIVE(ACTIVE)
+
+     outbound ah sas:
+
+     outbound pcp sas:
+R1#show running-config int f0/0
+Building configuration...
+
+Current configuration : 145 bytes
+!
+interface FastEthernet0/0
+ description Hacia-ISP
+ ip address 20.22.9.54 255.255.255.252
+ ip nat outside
+ duplex full
+ crypto map CMAP-FGT
+end
+
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#int f0/0
+R1(config-if)#no crypto map CMAP-FGT
+R1(config-if)#
+*Oct  7 04:51:58.271: %CRYPTO-6-ISAKMP_ON_OFF: ISAKMP is OFF
+R1(config-if)#end
+R1#
+*Oct  7 04:52:00.371: %SYS-5-CONFIG_I: Configured from console by console
+R1#clear crypto sa
+R1#clear crypto isakmp
+R1#show running-config int f0/0
+Building configuration...
+
+Current configuration : 124 bytes
+!
+interface FastEthernet0/0
+ description Hacia-ISP
+ ip address 20.22.9.54 255.255.255.252
+ ip nat outside
+ duplex full
+end
+
+R1#show crypto isakmp sa
+IPv4 Crypto ISAKMP SA
+dst             src             state          conn-id status
+20.22.9.54      20.22.9.50      MM_NO_STATE       1002 ACTIVE (deleted)
+
+IPv6 Crypto ISAKMP SA
+
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#int f0/0
+R1(config-if)#crypto map CMAP-FGT
+R1(config-if)#
+*Oct  7 04:54:30.251: %CRYPTO-6-ISAKMP_ON_OFF: ISAKMP is ON
+R1(config-if)#end
+R1#
+*Oct  7 04:54:34.615: %SYS-5-CONFIG_I: Configured from console by console
+R1#clear arp-cache
+R1#ping 172.22.9.10
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 172.22.9.10, timeout is 2 seconds:
+.....
+Success rate is 0 percent (0/5)
+R1#clear arp-cache
+R1#ping 172.22.9.10
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 172.22.9.10, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 28/28/28 ms
+R1#terminal length
+% Incomplete command.
+
+R1#terminal length 0
+R1#show-running config
+       ^
+% Invalid input detected at '^' marker.
+
+R1#show running-config
+Building configuration...
+
+Current configuration : 1836 bytes
+!
+! Last configuration change at 04:54:34 UTC Wed Oct 7 2026
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip tcp synwait-time 5
+!
+!
+crypto isakmp policy 10
+ authentication pre-share
+ group 14
+crypto isakmp key admin123 address 20.22.9.50
+!
+!
+crypto ipsec transform-set TS-FGT esp-des esp-sha-hmac
+ mode tunnel
+!
+!
+!
+crypto map CMAP-FGT 10 ipsec-isakmp
+ set peer 20.22.9.50
+ set transform-set TS-FGT
+ set pfs group14
+ match address VPN-FGT
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ description Hacia-ISP
+ ip address 20.22.9.54 255.255.255.252
+ ip nat outside
+ duplex full
+ crypto map CMAP-FGT
+!
+interface FastEthernet1/0
+ description LAN-servidor
+ ip address 172.22.9.1 255.255.255.240
+ ip nat inside
+ speed auto
+ duplex auto
+!
+interface FastEthernet1/1
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/0
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/1
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+ip nat inside source list NAT-SALIDA interface FastEthernet0/0 overload
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 20.22.9.53
+!
+ip access-list extended NAT-SALIDA
+ deny   ip 172.22.9.0 0.0.0.15 10.22.9.0 0.0.0.127
+ permit ip 172.22.9.0 0.0.0.15 any
+ip access-list extended VPN-FGT
+ permit ip 172.22.9.0 0.0.0.15 10.22.9.0 0.0.0.127
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ login
+!
+!
+end
+
+R1#
